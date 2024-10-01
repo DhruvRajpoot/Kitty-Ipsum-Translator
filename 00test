@@ -1,0 +1,32 @@
+echo hello > file.txt #overwrites the file
+echo hello2 >> file.txt #appends to the file
+echo hello 1> file.txt #redirects the output to a file
+bad_command 2> error.txt #redirects the error to a file
+read Name < file.txt #reads the file
+echo Dhruv | read Name #does not work (pipe creates a subshell)
+cat < file.txt #reads the file
+cat file.txt #reads the file
+echo "Hello" | cat #reads the input
+echo "Hello" | ./bash_script.sh #reads the input
+./bash_script.sh < file.txt #reads the file
+./bash_script.sh < file.txt 2> error.txt #reads the file and redirects the error
+
+wc -l file.txt #counts the lines in the file
+wc -w file.txt #counts the words in the file
+wc -c file.txt #counts the bytes in the file
+wc -m file.txt #counts the characters in the file
+
+wc kitty_ipsum_1.txt #reads with a file name
+cat kitty_ipsum_1.txt | wc #reads without a file name
+wc < kitty_ipsum_1.txt #reads without a file name
+
+cat kitty_ipsum_1.txt | wc -l >> file.txt #appends the line count to a file
+wc -c < kitty_ipsum_1.txt >> file.txt   #appends the character count to a file
+
+grep 'pattern' file.txt #searches for a pattern in a file
+grep --color -E 'pattern1|pattern2' file.txt #searches for multiple patterns in a file and highlights them
+
+sed 's/pattern/replace/' file.txt #replaces a pattern with a string in a file
+sed 's/pattern1/replace1/; s/pattern2/replace2/' file.txt #replaces multiple patterns with multiple strings in a file
+
+grep -n 'pattern' file.txt | sed -E 's/([0-9]+).*/\1/' #prints the line number AND uses regex to extract the line number
